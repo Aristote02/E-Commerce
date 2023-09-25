@@ -7,7 +7,7 @@ namespace ECommerce.DataAccess.Repositories.Implementations;
 public class ComputerRepository : IComputerRepository
 {
     private readonly ApplicationDbContext _context;
-
+          
     /// <summary>
     /// Initializes a new instance of <see cref="ComputerRepository"/>
     /// </summary>

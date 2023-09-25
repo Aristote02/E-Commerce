@@ -17,6 +17,7 @@ namespace ECommerce.DataAccess.Repositories.Implementations
         {
             this._context = context;
         }
+
         public async Task<ComputerCategory> AddAsync(ComputerCategory computerCategory)
         {
             _context.ComputerCategories.Add(computerCategory);
