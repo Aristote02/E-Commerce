@@ -34,7 +34,7 @@ public class ItemVariationService : IItemVariationService
             throw new NotFoundException("There is not item with such an id");
         }
 
-        var itemVariationDeleted = _itemVariationRepository.DeleteItemVariationAsync(itemVariation);
+        var itemVariationDeleted = await _itemVariationRepository.DeleteItemVariationAsync(itemVariation);
 
         return _mapper.Map<ItemVariationDTO>(itemVariationDeleted);
     }

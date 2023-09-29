@@ -59,7 +59,7 @@ public class ItemService : IItemService
 
     public async Task<ItemDTO> UpdateItemAsync(int id, ItemRequest itemRequest)
     {
-        var item = _itemRepository.GetItemByIdAsync(id);
+        var item = await _itemRepository.GetItemByIdAsync(id);
 
         if(item is null )
         {

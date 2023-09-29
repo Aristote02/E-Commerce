@@ -21,7 +21,7 @@ public class UserService : IUserService
     }
     public async Task<UserDTO> AddAsync(UserRequest request)
     {
-        var user = _userRepository.GetUserByEmailAsync(request.Email);
+        var user = await _userRepository.GetUserByEmailAsync(request.Email);
 
         if(user is not null)
         {
@@ -68,7 +68,7 @@ public class UserService : IUserService
 
     public async Task<UserDTO> UpdateAsync(UserRequest request)
     {
-        var user = _userRepository.GetUserByEmailAsync(request.Email);
+        var user = await _userRepository.GetUserByEmailAsync(request.Email);
         
         if(user is null)
         {
