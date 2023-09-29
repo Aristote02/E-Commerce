@@ -2,7 +2,7 @@
 
 namespace ECommerce.DataAccess.Repositories.Interfaces;
 
-public interface IItemVariation
+public interface IItemVariationRepository
 {
     Task<List<ItemVariation>> GetAllItemVariationsAsync();
     Task<ItemVariation?> GetItemVariationByIdAsync(int id);

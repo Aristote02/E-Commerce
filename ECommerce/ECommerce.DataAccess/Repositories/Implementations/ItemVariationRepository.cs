@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ECommerce.DataAccess.Repositories.Implementations;
 
-public class ItemVariationRepository : IItemVariation
+public class ItemVariationRepository : IItemVariationRepository
 {
     private readonly ApplicationDbContext _context;
 

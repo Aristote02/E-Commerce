@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ECommerce.DataAccess.Repositories.Implementations;
 
-public class ItemRepository : IItem
+public class ItemRepository : IItemRepository
 {
     private readonly ApplicationDbContext _context;
 
@@ -20,7 +20,7 @@ public class ItemRepository : IItem
         return item;
     }
 
-    public async Task<Item> DeleteItem(Item item)
+    public async Task<Item> DeleteItemAsync(Item item)
     {
         _context.Items.Remove(item);
         await _context.SaveChangesAsync();

@@ -33,23 +33,50 @@ public class UserService : IUserService
         return _mapper.Map<UserDTO>(userAdded);
     }
 
-    public Task<UserDTO> DeleteAsync(UserRequest userDTO)
+    public async Task<UserDTO> DeleteAsync(UserRequest request)
     {
-        throw new NotImplementedException();
+        var user = await _userRepository.GetUserByEmailAsync(request.Email);
+
+        if(user is null)
+        {
+            throw new NotFoundException("There is no user with that email");
+        }
+
+        var userDeleted = await _userRepository.DeleteAsync(_mapper.Map<User>(request));
+
+        return _mapper.Map<UserDTO>(userDeleted);
     }
 
-    public Task<List<UserDTO>> GetAllUsersAsync()
+    public async Task<List<UserDTO>> GetAllUsersAsync()
     {
-        throw new NotImplementedException();
+        var users = await _userRepository.GetAllUsersAsync();
+
+        return _mapper.Map<List<UserDTO>>(users); 
     }
 
-    public Task<UserDTO> GetUserById(int id)
+    public async Task<UserDTO> GetUserById(int id)
     {
-        throw new NotImplementedException();
+        var user = await _userRepository.GetUserByIdAsync(id);
+        
+        if(user is null)
+        {
+            throw new NotFoundException("There is no user with that Id");
+        }
+
+        return _mapper.Map<UserDTO>(user);
     }
 
-    public Task<UserDTO> UpdateAsync(UserRequest userDTO)
+    public async Task<UserDTO> UpdateAsync(UserRequest request)
     {
-        throw new NotImplementedException();
+        var user = _userRepository.GetUserByEmailAsync(request.Email);
+        
+        if(user is null)
+        {
+            throw new NotFoundException("There is no user with that Email to be updated");
+        }
+
+        var userUpdated = await _userRepository.UpdateAsync(_mapper.Map<User>(request));
+
+        return _mapper.Map<UserDTO>(userUpdated);
     }
 }
