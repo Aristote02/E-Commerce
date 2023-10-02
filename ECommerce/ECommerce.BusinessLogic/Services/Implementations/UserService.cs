@@ -28,7 +28,8 @@ public class UserService : IUserService
             throw new ExistException("A user with this email already exist");
         }
 
-       var userAdded =  await  _userRepository.AddAsync(_mapper.Map<User>(request));
+        var userWithRole = SetUserRole(_mapper.Map<User>(request));
+        var userAdded =  await  _userRepository.AddAsync(userWithRole);
 
         return _mapper.Map<UserDTO>(userAdded);
     }
@@ -78,5 +79,12 @@ public class UserService : IUserService
         var userUpdated = await _userRepository.UpdateAsync(_mapper.Map<User>(request));
 
         return _mapper.Map<UserDTO>(userUpdated);
+    }
+
+    private User SetUserRole(User user)
+    {
+        user.RoleId = -2;
+
+        return user;
     }
 }

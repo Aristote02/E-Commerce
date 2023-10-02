@@ -21,5 +21,27 @@ public class ApplicationDbContext : DbContext
 
         modelBuilder.Entity<User>().HasIndex(u => u.Email).IsUnique();
         modelBuilder.Entity<User>().HasKey(u => u.Id);
+        modelBuilder.Entity<Role>().HasData(new List<Role>
+        {
+           new Role
+           {
+               Id = -2,
+               Name = "user"
+           },
+           new Role
+           {
+               Id = -1,
+               Name = "admin"
+           }
+        });
+
+        modelBuilder.Entity<User>().HasData(new User
+        {
+            Id = -1,
+            UserName = "Aristote",
+            Email = "aristote@gmail.com",
+            Password = "Aris021122000",
+            RoleId = -1,
+        });
     }
 }
