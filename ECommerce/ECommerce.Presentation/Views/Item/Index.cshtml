@@ -1,0 +1,30 @@
+﻿@using ECommerce.BusinessLogic.DTO_s;
+@model List<ItemDTO>
+
+
+<br>
+<h2>List of items</h2>
+<table class="table">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Description</th>
+			<th>Price</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach(var item in Model)
+		{
+			<tr>
+				<td>@item.ID</td>
+				<td>@item.Name</td>
+				<td>@item.Description</td>
+				<td>@item.Price</td>
+				<td>
+					<a class="btn btn-primary btn-sm" href="/Item/Add" role="button">Add</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
