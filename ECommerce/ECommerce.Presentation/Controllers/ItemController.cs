@@ -46,7 +46,7 @@ namespace ECommerce.Presentation.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, ItemRequest itemRequest)
+        public async Task<IActionResult> Edit(int id,[FromForm] ItemRequest itemRequest)
         {
             if (ModelState.IsValid)
             {

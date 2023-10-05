@@ -1,9 +1,44 @@
 ﻿@using ECommerce.BusinessLogic.DTO_s;
 @model List<ItemDTO>
 
-
+<script type="text/javascript">
+	
+	function popUpWindow(id){
+		
+		document.getElementById("window-verification").style.display = "block";
+	}
+</script>
+<style>
+	body{
+		z-index: 10;
+	}
+	.window-show{
+		width:400px;
+		height:200px;
+		position: absolute;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+		z-index:100;
+		display:none;
+		border: 1px solid black;
+		border-radius:10px;
+		text-align: center;
+		align-items:center;
+		background:white;
+	}
+	.text-verification{
+		text-align: center;
+		vertical-align: middle;
+		line-height: 200px;
+	}
+</style>
 <br>
-<h2>List of items</h2>
+<h2 style="text-align:center">List of items</h2>
+<a class="btn btn-primary btn-sm" href="/Item/Add" role="button">Add new item</a>
+<div id="window-verification" class="window-show">
+	<p class="text-verification">Are you sure you want to delete this item?</p>
+</div>
 <table class="table">
 	<thead>
 		<tr>
@@ -21,8 +56,10 @@
 				<td>@item.Name</td>
 				<td>@item.Description</td>
 				<td>@item.Price</td>
+				
 				<td>
-					<a class="btn btn-primary btn-sm" href="/Item/Add" role="button">Add</a>
+					<a class="btn btn-primary btn-sm" href="/Item/Edit/@item.ID" >Edit</a>
+					<a class="btn btn-danger btn-sm"  onclick="popUpWindow(@item.ID)">Delete</a>
 				</td>
 			</tr>
 		}

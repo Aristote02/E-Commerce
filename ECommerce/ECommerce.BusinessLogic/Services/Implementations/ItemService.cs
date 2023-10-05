@@ -66,7 +66,8 @@ public class ItemService : IItemService
             throw new NotFoundException("There is no user with such an id");
         }
 
-        var itemUpdated = await _itemRepository.UpdateItemAsync(_mapper.Map<Item>(itemRequest));
+        _mapper.Map(itemRequest, item);
+        var itemUpdated = await _itemRepository.UpdateItemAsync(item);
 
         return _mapper.Map<ItemDTO>(itemUpdated);
     }
