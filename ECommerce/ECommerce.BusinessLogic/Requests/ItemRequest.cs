@@ -10,8 +10,9 @@ namespace ECommerce.BusinessLogic.Requests
 		public string Name { get; set; }
 		[Required]
 		public string Description { get; set; }
+
 		[Required]
-		[DataType(DataType.Currency)]
+	
 		public decimal Price { get; set; }
 	}
 }

@@ -61,21 +61,10 @@ namespace ECommerce.Presentation.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            var item = await _itemService.GetItemByIdAsync(id);
+			await _itemService.DeleteItemAsync(id);
 
-            return View(item);
-        }
-        [HttpPost]
-        public async Task<IActionResult> Delete(ItemDTO itemDto)
-        {
-            if (ModelState.IsValid)
-            {
-                await _itemService.DeleteItemAsync(itemDto.ID);
-
-                return RedirectToAction("Index", "Item");
-            }
-
-            return View();
-        }
+			return RedirectToAction("Index", "Item");
+		}
+      
     }
 }

@@ -1,26 +1,35 @@
 ﻿@using ECommerce.BusinessLogic.Requests
 @model ItemRequest
 
-<br />
-<h2 style="text-align:center">Add new Item</h2>
-<br />
+
 <form method="post">
-    <div class="form-outline mb-4">
-        <input asp-for="Name" class="form-control" />
-        <label class="form-label">Item Name</label> 
-    </div>
-    <div class="form-outline mb-4">
-        <input asp-for="Description" class="form-control" />
-        <label class="form-label">Item Description</label>
-    </div>
-    <div class="form-outline mb-4">
-        <input type="number" class="form-control" />
-        <label class="form-label">Item Price</label>
-    </div>
-    <div class="d-flex justify-content-center">
-        <button type="submit"
-                class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
-            Add
-        </button>
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 style="text-align:center">Add new Item</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Item Name</label>
+            <input asp-for="Name" class="form-control" />        
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Item Description</label>
+            <input asp-for="Description" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Item Price</label>
+            <input type="number" class="form-control" />
+        </div>
+        <div class="d-flex justify-content-center">
+            <button type="submit"
+                    class="btn btn-primary btn-sm" style="width:150px;">
+                Add
+            </button>
+        </div>
     </div>
 </form>
+
+
+
+
+
